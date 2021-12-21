@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Administrar\CategoriaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('administrar',function(){
     return view('administrar.index');
 });
+
+Route::resource('administrar/categoria','App\Http\Controllers\Administrar\CategoriaController');
