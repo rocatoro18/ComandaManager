@@ -4,18 +4,11 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="list-group">
-                    <a href="/administrar/categoria" class="list-group-item list-group-item-action"><i class="fas fa-align-justify"></i> Categoría</a>
-                    <a class="list-group-item list-group-item-action"><i class="fas fa-pizza-slice"></i> Menú</a>
-                    <a class="list-group-item list-group-item-action"><i class="fas fa-chair"></i> Mesa</a>
-                    <a class="list-group-item list-group-item-action"><i class="fas fa-user-cog"></i> Usuario</a>    
-                </div>
-            </div>
+            @include('administrar.inc.sidebar')
             <div class="col-md-8">
             <i class="fas fa-pizza-slice"></i>Crear un Menú          
                 <hr>
-                <form action="/administrar/menu" method="POST">
+                <form action="/administrar/menu" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="menuNombre">Nombre Menú</label>

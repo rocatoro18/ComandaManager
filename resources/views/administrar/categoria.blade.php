@@ -7,7 +7,7 @@
             @include('administrar.inc.sidebar')
             <div class="col-md-8">
                 <i class="fas fa-align-justify"></i>Categoría
-                <a href="categoria/create" class="btn btn-success btn-sm float-end"><i class="fas fa-plus"></i> Crear Categoria</a>           
+                <a href="categoria/create" class="btn btn-success btn-sm float-end"><i class="fas fa-plus"></i> Crear Categoría</a>           
                 <hr>
                 @if(Session()->has('status'))
                 <div class="alert alert-success">
