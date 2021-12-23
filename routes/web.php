@@ -21,6 +21,8 @@ Route::get('/cajero', function () {
     return view('cajero.index');
 });
 
+Route::get('/cajero/getMesa','App\Http\Controllers\Cajero\CajeroController@getMesas');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
