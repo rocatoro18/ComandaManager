@@ -16,7 +16,8 @@ class MesaController extends Controller
      */
     public function index()
     {
-        return view('administrar.mesa');
+        $mesas = ModelsMesa::all();
+        return view('administrar.mesa')->with('mesas',$mesas);
     }
 
     /**

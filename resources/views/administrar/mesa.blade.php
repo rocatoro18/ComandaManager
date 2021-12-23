@@ -26,7 +26,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                   @foreach($mesas as $mesa)
+                
+                   <tr>
+                       <td>{{$mesa->id}}</td>
+                       <td>{{$mesa->nombre}}</td>
+                       <td>{{$mesa->estado}}</td>
+                       <td></td>
+                       <td></td>
+                   </tr>
+
+                   @endforeach
                 </tbody>
                 </table>
             </div>
