@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cajero', function () {
-    return view('cajero.index');
-});
+Route::get('/cajero', 'App\Http\Controllers\Cajero\CajeroController@index');
+
+Route::get('/cajero/getMenuByCategoria/{categoria_id}', 'App\Http\Controllers\Cajero\CajeroController@getMenuByCategoria');
 
 Route::get('/cajero/getMesa','App\Http\Controllers\Cajero\CajeroController@getMesas');
+
+Route::post('/cajero/ordenComanda','App\Http\Controllers\Cajero\CajeroController@ordenComanda');
 
 Auth::routes();
 
