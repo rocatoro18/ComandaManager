@@ -32,7 +32,9 @@
                        <td>{{$mesa->id}}</td>
                        <td>{{$mesa->nombre}}</td>
                        <td>{{$mesa->estado}}</td>
-                       <td></td>
+                       <td>
+                           <a href="/administrar/mesa/{{$mesa->id}}/edit" class="btn btn-warning">Editar</a>
+                       </td>
                        <td></td>
                    </tr>
 

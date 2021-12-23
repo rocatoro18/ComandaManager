@@ -67,7 +67,8 @@ class MesaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mesa = ModelsMesa::find($id);
+        return view('administrar/editarMesa')->with('mesa',$mesa);
     }
 
     /**
@@ -79,7 +80,12 @@ class MesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(['nombre'=>'required|unique:mesas|max:30']);
+        $mesa = ModelsMesa::find($id);
+        $mesa->nombre = $request->nombre;
+        $mesa->save();
+        $request->session()->flash('status','La mesa se ha actualizado a '.$request->nombre.' con éxito');
+        return redirect('/administrar/mesa');
     }
 
     /**
