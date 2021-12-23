@@ -23,6 +23,8 @@ Route::get('/cajero/getMenuByCategoria/{categoria_id}', 'App\Http\Controllers\Ca
 
 Route::get('/cajero/getMesa','App\Http\Controllers\Cajero\CajeroController@getMesas');
 
+Route::get('/cajero/getDetallesVentaByMesa/{mesa_id}','App\Http\Controllers\Cajero\CajeroController@getDetallesVentaByMesa');
+
 Route::post('/cajero/ordenComanda','App\Http\Controllers\Cajero\CajeroController@ordenComanda');
 
 Auth::routes();

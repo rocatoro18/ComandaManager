@@ -64,6 +64,9 @@
             SELECTED_MESA_ID = $(this).data("id");
             SELECTED_MESA_NOMBRE = $(this).data("name");
             $("#selected-table").html('<br><h3>MESA: '+SELECTED_MESA_NOMBRE+'</h3><hr><div id="order-detail"></div>');
+            $.get("/cajero/getDetallesVentaByMesa/"+SELECTED_MESA_ID,function(data){
+                $('#order-detail').html(data);
+            });
         });
 
         $("#list-menu").on("click",".btn-menu",function(){

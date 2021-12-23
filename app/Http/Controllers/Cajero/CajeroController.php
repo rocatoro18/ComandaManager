@@ -100,6 +100,20 @@ class CajeroController extends Controller
 
     }
 
+    public function getDetallesVentaByMesa($mesa_id){
+        $venta = ModelsVenta::where('mesa_id',$mesa_id)->where('estado_venta','No Pagado')->first();
+        $html = '';
+
+        if($venta){
+            $venta_id = $venta->id;
+            $html .= $this->getDetallesVenta($venta_id);
+        }else{
+            $html .= "No se ha encontrado detalles de venta para la mesa seleccionada";
+        }
+
+        return $html;
+    }
+
     private function getDetallesVenta($venta_id){
 
         $html = '<p> Venta ID: '.$venta_id.'</p>';
