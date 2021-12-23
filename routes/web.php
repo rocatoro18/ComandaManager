@@ -27,6 +27,9 @@ Route::get('/cajero/getDetallesVentaByMesa/{mesa_id}','App\Http\Controllers\Caje
 
 Route::post('/cajero/ordenComanda','App\Http\Controllers\Cajero\CajeroController@ordenComanda');
 
+Route::post('/Cajero/ConfirmarOrdenEstado','App\Http\Controllers\Cajero\CajeroController@ConfirmarOrdenEstado');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

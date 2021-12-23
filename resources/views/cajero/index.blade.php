@@ -92,6 +92,21 @@
 
         });
 
+        $("#selected-table").on('click',".btn-confirm-order",function(){
+            var VentaID = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                data: {
+                    "_token" : $('<meta name="csrf-token" content="{{ csrf_token() }}">').attr('content'),
+                    "venta_id" : VentaID
+                },
+                url: "/Cajero/ConfirmarOrdenEstado",
+                success: function(data){
+                    $("#order-detail").html(data);
+                }
+            });
+        });
+
     });
 </script>
 @endsection

@@ -139,7 +139,12 @@ class CajeroController extends Controller
         </thead>
         <tbody>';
 
+        $showBtnPayment = true;
+
         foreach($DetalleVenta as $Detalle){
+            if($Detalle->Estado == "No Confirmado"){
+                $showBtnPayment = false;
+            }
             $html .=  '
             <tr>
                 <td>'.$Detalle->menu_id.'</td>
@@ -153,6 +158,27 @@ class CajeroController extends Controller
         }
 
         $html .='</tbody></table></div>';
+
+        $venta = ModelsVenta::find($venta_id);
+
+        $html .= '<hr>';
+        $html .= '<h3>Precio Total: $'.number_format($venta->precio_total).'</h3>';
+
+        if($showBtnPayment){
+            $html .= '<button data-id="'.$venta_id.'" class="btn btn-success btn-block btn-payment">Pagar Orden</button>';
+        }else{
+            $html .= '<button data-id="'.$venta_id.'" class="btn btn-warning btn-block btn-confirm-order">Confirmar Orden</button>';
+        }
+
+        return $html;
+    }
+
+    public function ConfirmarOrdenEstado(Request $request){
+        $venta_id = $request->venta_id;
+
+        $DetallesVenta = ModelsDetalleVenta::where('venta_id',$venta_id)->update(['Estado'=>'Confirmado']);
+
+        $html = $this->getDetallesVenta($venta_id);
 
         return $html;
     }
