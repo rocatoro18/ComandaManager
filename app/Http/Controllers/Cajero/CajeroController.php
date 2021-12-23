@@ -27,9 +27,13 @@ class CajeroController extends Controller
             $html .= 
             '<button class="btn btn-primary btn-mesa" data-id="'.$mesa->id.'" data-name="'.$mesa->nombre.'">
             <img class="img-fluid" src="'.url('/images/mesa.png').'"/>
-            <br>
-            <span class="badge badge-success">'.$mesa->nombre.'</span>
-            </button>';
+            <br>';
+            if($mesa->estado == "Disponible"){
+                $html .= '<span class="badge bg-success">'.$mesa->nombre.'</span>';
+            }else{ // Mesa no disponible
+                $html .= '<span class="badge bg-danger">'.$mesa->nombre.'</span>';
+            }
+            $html .='</button>';
             $html .= '</div>';
         }
         return $html;
@@ -73,7 +77,7 @@ class CajeroController extends Controller
             $venta->save();
             $venta_id = $venta->id;
             // Actualizar el estado de la mesa
-            $mesa = ModelsMenu::find($mesa_id);
+            $mesa = ModelsMesa::find($mesa_id);
             $mesa->estado = "No Disponible";
             $mesa->save();
         
