@@ -129,7 +129,7 @@ class CajeroController extends Controller
                 <td>'.$Detalle->cantidad.'</td>
                 <td>'.$Detalle->menu_precio.'</td>
                 <td>'.($Detalle->menu_precio * $Detalle->cantidad).'</td>
-                <td>'.$Detalle->estado.'</td>
+                <td>'.$Detalle->Estado.'</td>
             </tr>
             ';
         }

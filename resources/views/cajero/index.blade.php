@@ -8,9 +8,7 @@
         <div class="col-md-5">
             <button class="btn btn-primary btn-block" id="btn-show-tables">Ver Todas Las Mesas</button>
             <div id="selected-table">
-            <div id="order-detail">
-
-            </div>
+            <div id="order-detail"></div>
             </div>
         </div>
         <div class="col-md-7">
@@ -65,7 +63,7 @@
         $("#table-detail").on("click",".btn-mesa",function(){
             SELECTED_MESA_ID = $(this).data("id");
             SELECTED_MESA_NOMBRE = $(this).data("name");
-            $("#selected-table").html('<br><h3>MESA: '+SELECTED_MESA_NOMBRE+'</h3><hr>');
+            $("#selected-table").html('<br><h3>MESA: '+SELECTED_MESA_NOMBRE+'</h3><hr><div id="order-detail"></div>');
         });
 
         $("#list-menu").on("click",".btn-menu",function(){
@@ -84,11 +82,11 @@
                 },
                 url: "/cajero/ordenComanda",
                 success: function(data){
-                    alert(data);
-                    $("#order-detail").html(data);
-                }
+                    $('#order-detail').html(data);
+                },
                });
            }
+
         });
 
     });
