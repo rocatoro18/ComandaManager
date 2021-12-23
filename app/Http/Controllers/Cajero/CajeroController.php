@@ -12,7 +12,7 @@ class CajeroController extends Controller
     public function index(){
         return view('cajero.index');
     }
-
+    //
     public function getMesas(){
         $mesas = ModelsMesa::all();
         $html = '';
