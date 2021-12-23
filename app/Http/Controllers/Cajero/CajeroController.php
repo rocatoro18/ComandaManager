@@ -142,19 +142,21 @@ class CajeroController extends Controller
         $showBtnPayment = true;
 
         foreach($DetalleVenta as $Detalle){
-            if($Detalle->Estado == "No Confirmado"){
-                $showBtnPayment = false;
-            }
             $html .=  '
             <tr>
                 <td>'.$Detalle->menu_id.'</td>
                 <td>'.$Detalle->nombre_menu.'</td>
                 <td>'.$Detalle->cantidad.'</td>
                 <td>'.$Detalle->menu_precio.'</td>
-                <td>'.($Detalle->menu_precio * $Detalle->cantidad).'</td>
-                <td>'.$Detalle->Estado.'</td>
-            </tr>
-            ';
+                <td>'.($Detalle->menu_precio * $Detalle->cantidad).'</td>';
+                if($Detalle->Estado == "No Confirmado"){
+                    $showBtnPayment = false;
+                    $html .= '<td><a data-id="'.$Detalle->id.'" class="btn btn-danger btn-delete-saledetail"><i class="far fa-trash-alt"></i></a></td>';
+                }else{ // Estado confirmado
+                    $html .= '<td><i class="fas fa-check-circle"></i></td>';
+                }
+                $html .= '</tr>';
+              
         }
 
         $html .='</tbody></table></div>';
