@@ -40,8 +40,14 @@
                         </td>
                         <td>{{$menu->descripcion}}</td>
                         <td>{{$menu->categoria->nombre}}</td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="/administrar/menu/{{$menu->id}}/edit" class="btn btn-warning">Editar</a></td>
+                        <td>
+                            <form action="/administrar/menu/{{$menu->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Eliminar" class="btn btn-danger">
+                            </form>
+                        </td>
                     </tr>
 
                    @endforeach

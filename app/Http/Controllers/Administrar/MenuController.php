@@ -9,6 +9,7 @@ use App\Models\Categoria as ModelsCategoria;
 use Illuminate\Auth\Events\Validated;
 use App\Menu;
 use App\Models\Menu as ModelsMenu;
+use Illuminate\Contracts\Session\Session;
 
 class MenuController extends Controller
 {
@@ -94,7 +95,9 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = ModelsMenu::find($id);
+        $categorias = ModelsCategoria::all();
+        return view('administrar.editarMenu')->with('menu',$menu)->with('categorias',$categorias);
     }
 
     /**
@@ -106,7 +109,37 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validación de informacion
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'precio' => 'required|numeric',
+            'categoria_id' => 'required|numeric'
+        ]);
+        $menu = ModelsMenu::find($id);
+        // validar si el usuario subio imagen
+        if($request->image){
+            $request->validate([
+                'image' => 'nullable|file|image|mimes:jpeg,png,jpg|max:5000'
+            ]);
+            if($menu->image != "noimage.png"){
+                $imageName = $menu->image;
+                unlink(public_path('menu_images').'/'.$imageName);
+            }
+            $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
+            $request->image->move(public_path('menu_images'), $imageName);
+        }else{
+            $imageName = $menu->image;
+        }
+
+        $menu->nombre = $request->nombre;
+        $menu->precio = $request->precio;
+        $menu->image = $imageName;
+        $menu->descripcion = $request->descripcion;
+        $menu->categoria_id = $request->categoria_id;
+        $menu->save();
+        $request->session()->flash('status',$request->nombre.' Se ha actualizado con éxito');
+        return redirect('/administrar/menu');
+
     }
 
     /**
@@ -117,6 +150,13 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = ModelsMenu::find($id);
+        if($menu->image != "noimage.png"){
+            unlink(public_path('menu_images').'/'.$menu->image);
+        }
+        $nombreMenu = $menu->nombre;
+        $menu->delete();
+        Session()->flash('status',$nombreMenu." Se ha eliminado con éxito");
+        return redirect('/administrar/menu');
     }
 }
