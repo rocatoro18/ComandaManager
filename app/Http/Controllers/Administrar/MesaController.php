@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Administrar;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Mesa as ModelsMesa;
+
 
 class MesaController extends Controller
 {
@@ -24,7 +26,7 @@ class MesaController extends Controller
      */
     public function create()
     {
-        //
+        return view('administrar.crearMesa');
     }
 
     /**
@@ -35,7 +37,14 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|unique:mesas|max:30'
+        ]);
+        $mesa = new ModelsMesa();
+        $mesa->nombre = $request->nombre;
+        $mesa->save();
+        $request->session()->flash('status','Mesa '.$request->nombre.' Se ha creado con éxito');
+        return redirect('administrar/mesa');
     }
 
     /**
