@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Administrar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mesa as ModelsMesa;
-
+use Illuminate\Contracts\Session\Session;
 
 class MesaController extends Controller
 {
@@ -96,6 +96,8 @@ class MesaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ModelsMesa::destroy($id);
+        Session()->flash('status','La mesa se ha eliminado con éxito');
+        return redirect('/administrar/mesa');
     }
 }

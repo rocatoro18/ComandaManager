@@ -35,7 +35,13 @@
                        <td>
                            <a href="/administrar/mesa/{{$mesa->id}}/edit" class="btn btn-warning">Editar</a>
                        </td>
-                       <td></td>
+                       <td>
+                           <form action="/administrar/mesa/{{$mesa->id}}" method="POST">
+                            @csrf 
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar" class="btn btn-danger">
+                           </form>
+                       </td>
                    </tr>
 
                    @endforeach
