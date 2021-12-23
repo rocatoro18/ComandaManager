@@ -19,7 +19,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('administrar.menu');
+        $menus = ModelsMenu::all();
+        return view('administrar.menu')->with('menus',$menus);
     }
 
     /**
