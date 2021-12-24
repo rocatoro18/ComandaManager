@@ -142,11 +142,18 @@ class CajeroController extends Controller
         $showBtnPayment = true;
 
         foreach($DetalleVenta as $Detalle){
+
+            $decreaseButton = '<button class="btn btn-danger btn-sm btn-decrease-quantity" disabled>-</button>';
+            if($Detalle->cantidad > 1){
+                $decreaseButton = '<button data-id="'.$Detalle->id.'" class="btn btn-danger btn-sm btn-decrease-quantity">-</button>';
+            }
+
             $html .=  '
             <tr>
                 <td>'.$Detalle->menu_id.'</td>
                 <td>'.$Detalle->nombre_menu.'</td>
-                <td>'.$Detalle->cantidad.'</td>
+                <td>'. $decreaseButton. ' '. $Detalle->cantidad.'
+                <button data-id="'.$Detalle->id.'" class="btn btn-primary btn-sm btn-increase-quantity">+</button></td>
                 <td>'.$Detalle->menu_precio.'</td>
                 <td>'.($Detalle->menu_precio * $Detalle->cantidad).'</td>';
                 if($Detalle->Estado == "No Confirmado"){
@@ -229,6 +236,40 @@ class CajeroController extends Controller
         $venta = ModelsVenta::find($venta_id);
         $detallesVenta = ModelsDetalleVenta::where('venta_id',$venta_id)->get();
         return view('cajero.mostrarRecibo')->with('venta',$venta)->with('detallesVenta',$detallesVenta);
+    }
+
+    public function increaseQuantity(Request $request){
+        // Actualizar cantidad
+        $detalleVenta_id = $request->detalleVenta_id;
+        $detalleVenta = ModelsDetalleVenta::where('id',$detalleVenta_id)->first();
+        $detalleVenta->cantidad = $detalleVenta->cantidad + 1;
+        $detalleVenta->save();
+        
+        // Actualizar el monto total
+        $venta = ModelsVenta::where('id',$detalleVenta->venta_id)->first();
+        $venta->precio_total = $venta->precio_total + $detalleVenta->menu_precio;
+        $venta->save();
+
+        $html = $this->getDetallesVenta($detalleVenta->venta_id);
+
+        return $html;
+    }
+
+    public function decreaseQuantity(Request $request){
+        // Actualizar cantidad
+        $detalleVenta_id = $request->detalleVenta_id;
+        $detalleVenta = ModelsDetalleVenta::where('id',$detalleVenta_id)->first();
+        $detalleVenta->cantidad = $detalleVenta->cantidad - 1;
+        $detalleVenta->save();
+        
+        // Actualizar el monto total
+        $venta = ModelsVenta::where('id',$detalleVenta->venta_id)->first();
+        $venta->precio_total = $venta->precio_total - $detalleVenta->menu_precio;
+        $venta->save();
+
+        $html = $this->getDetallesVenta($detalleVenta->venta_id);
+
+        return $html;
     }
 
 }

@@ -34,6 +34,10 @@ Route::middleware(['auth'])->group(function(){
     
     Route::post('/Cajero/EliminarDetalleVenta','App\Http\Controllers\Cajero\CajeroController@EliminarDetalleVenta');
     
+    Route::post('/Cajero/increase-quantity','App\Http\Controllers\Cajero\CajeroController@increaseQuantity');
+    
+    Route::post('/Cajero/decrease-quantity','App\Http\Controllers\Cajero\CajeroController@decreaseQuantity');
+
     Route::post('/Cajero/GuardarPago','App\Http\Controllers\Cajero\CajeroController@GuardarPago');
     
     Route::get('/cajero/mostrarRecibo/{saleID}','App\Http\Controllers\Cajero\CajeroController@mostrarRecibo');

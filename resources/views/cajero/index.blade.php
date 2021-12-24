@@ -205,6 +205,38 @@
             });
         });
 
+        // incrementar cantidad
+        $("#selected-table").on('click',".btn-increase-quantity",function(){
+            var DetalleVentaID = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                data: {
+                    "_token" : $('<meta name="csrf-token" content="{{ csrf_token() }}">').attr('content'),
+                    "detalleVenta_id": DetalleVentaID
+                },
+                url: "/Cajero/increase-quantity",
+                success: function(data){
+                    $("#order-detail").html(data);
+                }
+            });
+        });
+
+        // decrementar cantidad
+        $("#selected-table").on('click',".btn-decrease-quantity",function(){
+            var DetalleVentaID = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                data: {
+                    "_token" : $('<meta name="csrf-token" content="{{ csrf_token() }}">').attr('content'),
+                    "detalleVenta_id": DetalleVentaID
+                },
+                url: "/Cajero/decrease-quantity",
+                success: function(data){
+                    $("#order-detail").html(data);
+                }
+            });
+        });
+
 
     });
 </script>
