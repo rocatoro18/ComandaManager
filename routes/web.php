@@ -55,3 +55,7 @@ Route::resource('administrar/mesa','App\Http\Controllers\Administrar\MesaControl
 Route::get('/reporte','App\Http\Controllers\Reporte\ReporteController@index');
 
 Route::get('/reporte/mostrar','App\Http\Controllers\Reporte\ReporteController@mostrar');
+
+
+Route::get('/reporte/mostrar/exportar','App\Http\Controllers\Reporte\ReporteController@exportar');
+
