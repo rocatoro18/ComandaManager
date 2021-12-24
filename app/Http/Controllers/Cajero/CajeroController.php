@@ -167,7 +167,7 @@ class CajeroController extends Controller
         $html .= '<h3>Precio Total: $'.number_format($venta->precio_total).'</h3>';
 
         if($showBtnPayment){
-            $html .= '<button data-id="'.$venta_id.'" class="btn btn-success btn-block btn-payment">Pagar Orden</button>';
+            $html .= '<button data-id="'.$venta_id.'" data-totalAmount="'.$venta->precio_total.'" class="btn btn-success btn-block btn-payment" data-bs-toggle="modal" data-bs-target="#exampleModal">Pagar Orden</button>';
         }else{
             $html .= '<button data-id="'.$venta_id.'" class="btn btn-warning btn-block btn-confirm-order">Confirmar Orden</button>';
         }
