@@ -35,3 +35,6 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+window.moment = require("moment");
+require("tempusdominus-bootstrap-4");

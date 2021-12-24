@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.4"
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "moment": "^2.29.1",
+        "tempusdominus-bootstrap-4": "^5.39.0"
     }
 }

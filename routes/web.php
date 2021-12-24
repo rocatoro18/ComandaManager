@@ -51,3 +51,7 @@ Route::get('administrar',function(){
 Route::resource('administrar/categoria','App\Http\Controllers\Administrar\CategoriaController');
 Route::resource('administrar/menu','App\Http\Controllers\Administrar\MenuController');
 Route::resource('administrar/mesa','App\Http\Controllers\Administrar\MesaController');
+
+Route::get('/reporte','App\Http\Controllers\Reporte\ReporteController@index');
+
+Route::get('/reporte/mostrar','App\Http\Controllers\Reporte\ReporteController@mostrar');
