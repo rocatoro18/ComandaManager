@@ -64,9 +64,7 @@
                   @endforeach
                 @endforeach
               </tbody>
-            </table>
-   
-            {{$ventas->appends($_GET)->links()}}
+            </table>     
 
             <form action="/reporte/mostrar/exportar" method="get">
               <input type="hidden" name="dateStart" value="{{$dateStart}}" >
