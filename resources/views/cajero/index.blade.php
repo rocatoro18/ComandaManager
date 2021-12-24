@@ -107,6 +107,23 @@
             });
         });
 
+        // Eliminar detalle venta
+        $("#selected-table").on('click',".btn-delete-saledetail",function(){
+            var DetalleVentaID = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                data: {
+                    "_token" : $('<meta name="csrf-token" content="{{ csrf_token() }}">').attr('content'),
+                    "detalleVenta_id": DetalleVentaID
+                },
+                url: "/Cajero/EliminarDetalleVenta",
+                success: function(data){
+                    $("#order-detail").html(data);
+                }
+            });
+        });
+
+
     });
 </script>
 @endsection

@@ -185,4 +185,26 @@ class CajeroController extends Controller
         return $html;
     }
 
+    public function EliminarDetalleVenta(Request $request){
+        $detalleVenta_id = $request->detalleVenta_id;
+        $detalleVenta = ModelsDetalleVenta::find($detalleVenta_id);
+        $venta_id = $detalleVenta->venta_id;
+        $menu_precio = ($detalleVenta->menu_precio * $detalleVenta->cantidad);
+        $detalleVenta->delete();
+        // Actualizar precio total
+        $venta = ModelsVenta::find($venta_id);
+        $venta->precio_total = $venta->precio_total - $menu_precio;
+        $venta->save();
+        //Verificar si hay algun detalle de venta que tenga la venta
+        $detalleVenta = ModelsDetalleVenta::where('venta_id',$venta_id)->first();
+
+        if($detalleVenta){
+            $html = $this->getDetallesVenta($venta_id);
+        }else{
+            $html = "No se ha encontrado detalles de venta para la mesa seleccionada";
+        }
+
+        return $html;
+    }
+
 }

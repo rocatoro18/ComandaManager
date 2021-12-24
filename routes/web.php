@@ -29,6 +29,8 @@ Route::post('/cajero/ordenComanda','App\Http\Controllers\Cajero\CajeroController
 
 Route::post('/Cajero/ConfirmarOrdenEstado','App\Http\Controllers\Cajero\CajeroController@ConfirmarOrdenEstado');
 
+Route::post('/Cajero/EliminarDetalleVenta','App\Http\Controllers\Cajero\CajeroController@EliminarDetalleVenta');
+
 
 Auth::routes();
 
