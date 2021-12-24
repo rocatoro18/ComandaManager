@@ -207,4 +207,28 @@ class CajeroController extends Controller
         return $html;
     }
 
+    public function GuardarPago(Request $request){
+        $saleID = $request->saleID;
+        $receivedAmount = $request->receivedAmount;
+        $paymentType = $request->paymentType;
+        // Actulizar la informacion de venta en la tabla de ventas usando el modelo de venta
+        $venta = ModelsVenta::find($saleID);
+        $venta->recibido_total = $receivedAmount;
+        $venta->cambio_total = $receivedAmount - $venta->precio_total;
+        $venta->tipo_pago = $paymentType;
+        $venta->estado_venta = "Pagado";
+        $venta->save();
+        // Actualizar la mesa para que este disponible
+        $mesa = ModelsMesa::find($venta->mesa_id);
+        $mesa->estado = "Disponible";
+        $mesa->save();
+        return "/cajero/mostrarRecibo/".$saleID;
+    }
+
+    public function mostrarRecibo($venta_id){
+        $venta = ModelsVenta::find($venta_id);
+        $detallesVenta = ModelsDetalleVenta::where('venta_id',$venta_id)->get();
+        return view('cajero.mostrarRecibo')->with('venta',$venta)->with('detallesVenta',$detallesVenta);
+    }
+
 }

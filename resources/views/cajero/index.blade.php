@@ -38,10 +38,24 @@
       </div>
       <div class="modal-body">
         <h3 class="totalAmount"></h3>
+        <h3 class="changeAmount"></h3>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="number" id="received-amount" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="payment">Tipo de Pago</label>
+            <select class="form-control" id="payment-type">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+            </select>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary btn-save-payment" disabled>Guardar Pago</button>
       </div>
     </div>
   </div>
@@ -78,6 +92,7 @@
         });
         var SELECTED_MESA_ID = "";
         var SELECTED_MESA_NOMBRE = "";
+        var VENTA_ID = "";
         // Detectar boton mesa al clickarlo para mostrar info de la mesa
 
         $("#table-detail").on("click",".btn-mesa",function(){
@@ -147,7 +162,49 @@
         $("#selected-table").on('click',".btn-payment",function(){
             var totalAmount = $(this).attr('data-totalAmount');
             $(".totalAmount").html("Precio Total: "+totalAmount);
+            $("#received-amount").val('');
+            $(".changeAmount").html('');
+            VENTA_ID = $(this).data('id');
         });
+
+        // Calcular Cambio
+        $("#received-amount").keyup(function(){
+            var totalAmount = $(".btn-payment").attr('data-totalAmount');
+            var receivedAmount = $(this).val();
+            var changeAmount = receivedAmount - totalAmount;
+            $(".changeAmount").html("Cambio Total: $" + changeAmount);
+
+            //Verificar si el cajero ingreso el monto correcto, despues habilitar o desabilitar el boton de guardar pago
+
+            if(changeAmount >= 0){
+                $('.btn-save-payment').prop('disabled',false);
+            }else{
+                $('.btn-save-payment').prop('disabled',true);
+            }
+
+        });
+
+
+        // Guardar Pago
+        $(".btn-save-payment").click(function(){
+            var receivedAmount = $("#received-amount").val();
+            var paymentType = $("#payment-type").val();
+            var saleId = VENTA_ID;
+            $.ajax({
+                type: "POST",
+                data: {
+                    "_token" : $('<meta name="csrf-token" content="{{ csrf_token() }}">').attr('content'),
+                    "saleID" : saleId,
+                    "receivedAmount": receivedAmount,
+                    "paymentType": paymentType
+                },
+                url: "/Cajero/GuardarPago",
+                success: function(data){
+                    window.location.href=data;
+                }
+            });
+        });
+
 
     });
 </script>

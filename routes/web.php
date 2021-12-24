@@ -31,6 +31,10 @@ Route::post('/Cajero/ConfirmarOrdenEstado','App\Http\Controllers\Cajero\CajeroCo
 
 Route::post('/Cajero/EliminarDetalleVenta','App\Http\Controllers\Cajero\CajeroController@EliminarDetalleVenta');
 
+Route::post('/Cajero/GuardarPago','App\Http\Controllers\Cajero\CajeroController@GuardarPago');
+
+Route::get('/cajero/mostrarRecibo/{saleID}','App\Http\Controllers\Cajero\CajeroController@mostrarRecibo');
+
 
 Auth::routes();
 
