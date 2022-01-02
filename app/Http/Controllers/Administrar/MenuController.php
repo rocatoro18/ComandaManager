@@ -150,10 +150,13 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
+
         $menu = ModelsMenu::find($id);
+        /*
         if($menu->image != "noimage.png"){
             unlink(public_path('menu_images').'/'.$menu->image);
         }
+        */
         $nombreMenu = $menu->nombre;
         $menu->delete();
         Session()->flash('status',$nombreMenu." Se ha eliminado con éxito");

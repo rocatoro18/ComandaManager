@@ -9,6 +9,7 @@ use App\Models\Categoria as ModelsCategoria;
 use App\Models\Menu as ModelsMenu;
 use App\Models\Venta as ModelsVenta;
 use App\Models\DetalleVenta as ModelsDetalleVenta;
+use App\Values\DetalleVentaStateValues;
 use Illuminate\Support\Facades\Auth;
 
 class CajeroController extends Controller
@@ -270,6 +271,13 @@ class CajeroController extends Controller
         $html = $this->getDetallesVenta($detalleVenta->venta_id);
 
         return $html;
+    }
+
+    // STRATEGY PATRÓN
+    public function getDetalleVentaState(Request $request){
+        $estado = $request -> input(key:'Estado');
+        $strategyClass = DetalleVentaStateValues::STRATEGY[$estado];
+        return (new $strategyClass)->getDetalleVentaState();
     }
 
 }
