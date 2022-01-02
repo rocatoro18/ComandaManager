@@ -20,7 +20,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="categoriaNombre">Nombre Categoría</label>
-                        <input type="text" name="nombre" value="{{$categoria->nombre}}" class="form-control" placeholder="Nombre Categoría">
+                        <input type="text" name="nombre" value="{{$categoria->nombre}}" class="form-control" placeholder="Nombre Categoría" autocomplete="off">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Actualizar</button>

@@ -13,13 +13,13 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="menuNombre">Nombre Menú</label>
-                        <input type="text" name="nombre" class="form-control" value="{{$menu->nombre}}" placeholder="Nombre Menú">
+                        <input type="text" name="nombre" class="form-control" value="{{$menu->nombre}}" placeholder="Nombre Menú" autocomplete="off">
                         <label for="precioMenu">Precio Menú</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="text" name="precio" value="{{$menu->precio}}" class="form-control" aria-label="Monto (al peso más cercano)">
+                            <input type="text" name="precio" value="{{$menu->precio}}" class="form-control" aria-label="Monto (al peso más cercano)" autocomplete="off">
                         </div>
                     <label for="imagenMenu">Imagen Menú</label>
                     <div class="input-group mb-3">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Descripcion">Descripción Menú</label>
-                        <input type="text" name="descripcion" value="{{$menu->descripcion}}" class="form-control" placeholder="Descripción Menú">
+                        <input type="text" name="descripcion" value="{{$menu->descripcion}}" class="form-control" placeholder="Descripción Menú" autocomplete="off">
                     </div>
 
                     <div class="form-group">
