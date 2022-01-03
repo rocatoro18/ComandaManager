@@ -2,6 +2,8 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Administrar\CategoriaController;
+use App\Http\Controllers\Administrar\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +58,8 @@ Route::middleware(['auth','VerifyAdmin'])->group(function(){
     Route::resource('administrar/mesa','App\Http\Controllers\Administrar\MesaController');
     
     Route::resource('administrar/user','App\Http\Controllers\Administrar\UserController');
+
+    //Route::get('administrar/user',[UserController::class, 'index']);
 
     Route::get('/reporte','App\Http\Controllers\Reporte\ReporteController@index');
     

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User as ModelsUser;
+use App\Repository\IUserRepo;
+use App\Repository\UserRepo;
 
 class UserController extends Controller
 {
@@ -14,9 +16,26 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+/*
+     public function __construct(UserRepositories $userRepositories)
+     {
+         $this->userRepositories = $userRepositories;
+     }
+*/
+
+     // PATRÓN INYECCIÓN DE DEPENDENCIAS O DEPENDENCY INJECTION
+     private UserRepo $userRepo;
+
+     public function __construct(UserRepo $userRepo)
+     {
+         $this->userRepo = $userRepo;
+     }
+
     public function index()
     {
-        $users = ModelsUser::all();
+        // PATRÓN REPOSITORIO
+        $users = $this->userRepo->all();
+        //$users = ModelsUser::all();
         return view('administrar.usuario')->with('users',$users);
     }
 

@@ -13,12 +13,12 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nombre">                 
+                        <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nombre" autocomplete="off">                 
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" value="{{$user->email}}" class="form-control" placeholder="Email">                 
+                        <input type="email" name="email" value="{{$user->email}}" class="form-control" placeholder="Email" autocomplete="off">                 
                     </div>      
 
                     <div class="form-group">

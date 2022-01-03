@@ -12,7 +12,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="mesaNombre">Nombre Mesa</label>
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre Mesa">
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre Mesa" autocomplete="off">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Guardar</button>
