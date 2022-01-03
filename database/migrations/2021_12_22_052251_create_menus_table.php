@@ -11,6 +11,7 @@ class CreateMenusTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('menus', function (Blueprint $table) {

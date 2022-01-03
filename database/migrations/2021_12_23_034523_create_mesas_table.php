@@ -11,6 +11,7 @@ class CreateMesasTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('mesas', function (Blueprint $table) {

@@ -11,6 +11,7 @@ class CreateVentasTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('ventas', function (Blueprint $table) {
