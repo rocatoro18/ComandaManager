@@ -40,8 +40,6 @@
                         </form>
                         </th>
                     </tr>
-
-
                     @endforeach
                 </tbody>
                 </table>
