@@ -18,7 +18,7 @@ class CajeroController extends Controller
         $categorias = ModelsCategoria::all();
         return view('cajero.index')->with('categorias',$categorias);
     }
-    //
+    
     public function getMesas(){
         $mesas = ModelsMesa::all();
         $html = '';
@@ -84,7 +84,6 @@ class CajeroController extends Controller
         }else{ // Si hay una venta en la mesa
             $venta_id = $venta->id;
         }
-        
 
         // Agregar orden menu a los detalles venta tabla
         $DetalleVenta = new ModelsDetalleVenta();
@@ -100,8 +99,7 @@ class CajeroController extends Controller
         $venta->save();
 
         $html = $this->getDetallesVenta($venta_id);
-        return $html; // TEST
-
+        return $html;
     }
 
     public function getDetallesVentaByMesa($mesa_id){

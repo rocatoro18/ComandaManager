@@ -62,39 +62,41 @@
 </div>
 
 <script>
+    
+    // Función para mostrar ó no los detalles de una venta
     $(document).ready(function(){
-
         $("#table-detail").hide();
-
-
+        // Función para desplegar u ocultar los detalles de la venta
         $("#btn-show-tables").click(function(){
-            if($("#table-detail").is(":hidden")){
+            // Preguntamos si estan ocultos los detalles de venta
+            if ($("#table-detail").is(":hidden")){
+                // Función para cargar los datos de venta
                 $.get("/cajero/getMesa",function(data){
-                $("#table-detail").html(data);
-                $("#table-detail").slideDown('fast');
-                $("#btn-show-tables").html('Ocultar Mesas').removeClass('btn-primary').addClass('btn-danger');
-            })
-            }else{
+                    $("#table-detail").html(data);
+                    $("#table-detail").slideDown('fast');
+                    $("#btn-show-tables").html('Ocultar Mesas').removeClass('btn-primary').addClass('btn-danger');
+                })
+            } else { 
                 $("#table-detail").slideUp('fast');
                 $("#btn-show-tables").html('Ver Todas Las Mesas').removeClass('btn-danger').addClass('btn-primary');
             }
-            
         });
 
         // Cargar menus por categoria
-
         $(".nav-link").click(function(){
-            $.get("/cajero/getMenuByCategoria/"+$(this).data("id"),function(data){
-                $("#list-menu").hide();
-                $("#list-menu").html(data);
-                $("#list-menu").fadeIn('fast');
-            });
+            $.get("/cajero/getMenuByCategoria/"+$(this).data("id"),
+                function(data){
+                    $("#list-menu").hide();
+                    $("#list-menu").html(data);
+                    $("#list-menu").fadeIn('fast');
+                });
         });
+
         var SELECTED_MESA_ID = "";
         var SELECTED_MESA_NOMBRE = "";
         var VENTA_ID = "";
-        // Detectar boton mesa al clickarlo para mostrar info de la mesa
 
+        // Detectar boton mesa al clickarlo para mostrar info de la mesa
         $("#table-detail").on("click",".btn-mesa",function(){
             SELECTED_MESA_ID = $(this).data("id");
             SELECTED_MESA_NOMBRE = $(this).data("name");
@@ -104,29 +106,36 @@
             });
         });
 
+        // Función para desplegar el menu del restaurant
+        // y agregarlo a los detalles de orden de dicha mesa
         $("#list-menu").on("click",".btn-menu",function(){
-           if(SELECTED_MESA_ID == ""){
-               alert("Necesita seleccionar primero la mesa para el cliente");
-           }else{
-               var menu_id = $(this).data("id");   
-               $.ajax({
-                type: "POST",
-                data: {
+            if(SELECTED_MESA_ID == ""){
+                alert("Necesita seleccionar primero la mesa para el cliente");
+            } else {
+                // Asignamos el id seleccionado a la variable
+                var menu_id = $(this).data("id");
+                // Petición ajax para mandar los detalles de orden
+                // a la base de datos
+                $.ajax({
+                    type: "POST",
+                    data: {
                     "_token" : $('<meta name="csrf-token" content="{{ csrf_token() }}">').attr('content'),
                     "menu_id" : menu_id,
                     "mesa_id": SELECTED_MESA_ID,
                     "nombre_mesa": SELECTED_MESA_NOMBRE,
                     "quantity": 1
                 },
-                url: "/cajero/ordenComanda",
-                success: function(data){
-                    $('#order-detail').html(data);
-                },
+                    url: "/cajero/ordenComanda",
+                    // En caso de éxito, traemos los datos y poblamos
+                    // la tabla de detalles de orden
+                    success: function(data){
+                        $('#order-detail').html(data);
+                    },
                });
            }
-
         });
 
+        // Confirmamos orden
         $("#selected-table").on('click',".btn-confirm-order",function(){
             var VentaID = $(this).data("id");
             $.ajax({
@@ -174,16 +183,15 @@
             var changeAmount = receivedAmount - totalAmount;
             $(".changeAmount").html("Cambio Total: $" + changeAmount);
 
-            //Verificar si el cajero ingreso el monto correcto, despues habilitar o desabilitar el boton de guardar pago
+            //Verificar si el cajero ingreso el monto correcto, 
+            //despues habilitar o desabilitar el boton de guardar pago
 
-            if(changeAmount >= 0){
+            if (changeAmount >= 0) {
                 $('.btn-save-payment').prop('disabled',false);
-            }else{
-                $('.btn-save-payment').prop('disabled',true);
-            }
+            } else
+            $('.btn-save-payment').prop('disabled',true);
 
         });
-
 
         // Guardar Pago
         $(".btn-save-payment").click(function(){
