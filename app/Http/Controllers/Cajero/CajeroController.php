@@ -57,7 +57,7 @@ class CajeroController extends Controller
     /**
      * Se utiliza para mostrar todos los menus en base a la categoria que
      * se selecciono
-     * @param \Illuminate\Http\Request  $categoria_id
+     * @param \Illuminate\Http\Request  $categoria_id Utilzado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -83,7 +83,7 @@ class CajeroController extends Controller
 
     /**
      * Se utiliza para procesar y mostrar una orden de comanda 
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -133,7 +133,7 @@ class CajeroController extends Controller
     /**
      * Se utiliza para mostrar y desplegar en pantalla los detalles de la venta
      * por mesa
-     * @param \Illuminate\Http\Request  $mesa_id
+     * @param \Illuminate\Http\Request  $mesa_id Utilizado para recibir la información de la mesa proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -153,7 +153,7 @@ class CajeroController extends Controller
 
     /**
      * Se utiliza para obtener y mostrar en pantalla los detalles de una venta
-     * @param \Illuminate\Http\Request  $venta_id
+     * @param \Illuminate\Http\Request  $venta_id Utilizado para recibir la venta proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -223,7 +223,7 @@ class CajeroController extends Controller
 
     /**
      * Se utiliza para saber cual es el estado de una orden
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -240,7 +240,7 @@ class CajeroController extends Controller
     /**
      * Se utiliza para poder eliminar un producto no deseado de
      * la comanda
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -268,7 +268,7 @@ class CajeroController extends Controller
 
     /**
      * Se utiliza para guardar el pago hecho por el cliente
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -293,7 +293,7 @@ class CajeroController extends Controller
     /**
      * Se utiliza para mostrar el recibo de pago generado despues de 
      * realizar la venta
-     * @param \Illuminate\Http\Request  $venta_id
+     * @param \Illuminate\Http\Request  $venta_id Utilizado para recibir la venta proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -305,7 +305,7 @@ class CajeroController extends Controller
 
     /**
      * Se utiliza para aumentar la cantidad de un producto
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
@@ -328,7 +328,7 @@ class CajeroController extends Controller
 
     /**
      * Se utiliza para decrementar la cantidad de un producto
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
 
