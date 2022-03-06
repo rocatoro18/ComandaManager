@@ -11,16 +11,27 @@ use App\Models\Venta as ModelsVenta;
 use App\Models\DetalleVenta as ModelsDetalleVenta;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Este controlador es responsable de gestionar todos los metodos
+ * necesarios para que funcione el modulo de cajero
+ */
+
 class CajeroController extends Controller
 {
-    // Primera página de cajero
+    /**
+     * Se utiliza para desplegar todas las categoria en el index
+     * del cajero
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
         $categorias = ModelsCategoria::all();
         return view('cajero.index')->with('categorias',$categorias);
     }
     
     /**
-     * Prueba get mesas
+     * Se utiliza para mostrar todas las mesas con las que
+     * cuenta el establecimiento
+     * @return \Illuminate\Http\Response
      */
 
     public function getMesas(){
@@ -43,6 +54,13 @@ class CajeroController extends Controller
         return $html;
     }
 
+    /**
+     * Se utiliza para mostrar todos los menus en base a la categoria que
+     * se selecciono
+     * @param \Illuminate\Http\Request  $categoria_id
+     * @return \Illuminate\Http\Response
+     */
+
     public function getMenuByCategoria($categoria_id){
         $menus = ModelsMenu::where('categoria_id',$categoria_id)->get();
         $html = '';
@@ -62,6 +80,12 @@ class CajeroController extends Controller
         }
         return $html;
     }
+
+    /**
+     * Se utiliza para procesar y mostrar una orden de comanda 
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function ordenComanda(Request $request){
         $menu = ModelsMenu::find($request->menu_id);
@@ -106,6 +130,13 @@ class CajeroController extends Controller
         return $html;
     }
 
+    /**
+     * Se utiliza para mostrar y desplegar en pantalla los detalles de la venta
+     * por mesa
+     * @param \Illuminate\Http\Request  $mesa_id
+     * @return \Illuminate\Http\Response
+     */
+
     public function getDetallesVentaByMesa($mesa_id){
         $venta = ModelsVenta::where('mesa_id',$mesa_id)->where('estado_venta','No Pagado')->first();
         $html = '';
@@ -119,6 +150,12 @@ class CajeroController extends Controller
 
         return $html;
     }
+
+    /**
+     * Se utiliza para obtener y mostrar en pantalla los detalles de una venta
+     * @param \Illuminate\Http\Request  $venta_id
+     * @return \Illuminate\Http\Response
+     */
 
     private function getDetallesVenta($venta_id){
 
@@ -184,6 +221,12 @@ class CajeroController extends Controller
         return $html;
     }
 
+    /**
+     * Se utiliza para saber cual es el estado de una orden
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
     public function ConfirmarOrdenEstado(Request $request){
         $venta_id = $request->venta_id;
 
@@ -193,6 +236,13 @@ class CajeroController extends Controller
 
         return $html;
     }
+
+    /**
+     * Se utiliza para poder eliminar un producto no deseado de
+     * la comanda
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function EliminarDetalleVenta(Request $request){
         $detalleVenta_id = $request->detalleVenta_id;
@@ -216,6 +266,12 @@ class CajeroController extends Controller
         return $html;
     }
 
+    /**
+     * Se utiliza para guardar el pago hecho por el cliente
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
     public function GuardarPago(Request $request){
         $saleID = $request->saleID;
         $receivedAmount = $request->receivedAmount;
@@ -234,11 +290,24 @@ class CajeroController extends Controller
         return "/cajero/mostrarRecibo/".$saleID;
     }
 
+    /**
+     * Se utiliza para mostrar el recibo de pago generado despues de 
+     * realizar la venta
+     * @param \Illuminate\Http\Request  $venta_id
+     * @return \Illuminate\Http\Response
+     */
+
     public function mostrarRecibo($venta_id){
         $venta = ModelsVenta::find($venta_id);
         $detallesVenta = ModelsDetalleVenta::where('venta_id',$venta_id)->get();
         return view('cajero.mostrarRecibo')->with('venta',$venta)->with('detallesVenta',$detallesVenta);
     }
+
+    /**
+     * Se utiliza para aumentar la cantidad de un producto
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function increaseQuantity(Request $request){
         // Actualizar cantidad
@@ -256,6 +325,12 @@ class CajeroController extends Controller
 
         return $html;
     }
+
+    /**
+     * Se utiliza para decrementar la cantidad de un producto
+     * @param \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function decreaseQuantity(Request $request){
         // Actualizar cantidad

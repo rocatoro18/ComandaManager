@@ -11,6 +11,11 @@ use App\Menu;
 use App\Models\Menu as ModelsMenu;
 use Illuminate\Contracts\Session\Session;
 
+/**
+ * Este controlador es responsable de gestionar todos los metodos
+ * necesarios para que funcione el modulo de menu
+ */
+
 class MenuController extends Controller
 {
     /**

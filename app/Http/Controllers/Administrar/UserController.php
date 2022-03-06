@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User as ModelsUser;
 
+/**
+ * Este controlador es responsable de gestionar todos los metodos
+ * necesarios para que funcione el modulo de usuario
+ */
+
 class UserController extends Controller
 {
     /**

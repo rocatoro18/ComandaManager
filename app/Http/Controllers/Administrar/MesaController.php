@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Mesa as ModelsMesa;
 use Illuminate\Contracts\Session\Session;
 
+/**
+ * Este controlador es responsable de gestionar todos los metodos
+ * necesarios para que funcione el modulo de mesa
+ */
+
 class MesaController extends Controller
 {
     /**
