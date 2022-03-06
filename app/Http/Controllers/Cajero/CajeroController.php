@@ -19,6 +19,10 @@ class CajeroController extends Controller
         return view('cajero.index')->with('categorias',$categorias);
     }
     
+    /**
+     * Prueba get mesas
+     */
+
     public function getMesas(){
         $mesas = ModelsMesa::all();
         $html = '';

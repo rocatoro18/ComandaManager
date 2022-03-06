@@ -10,7 +10,7 @@ use App\Models\User as ModelsUser;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se utiliza para mostrar todos los usuario en el index
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Se utiliza para mostrar el formulario donde se va a crear un nuevo usuario
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,10 +31,10 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Se utiliza para almacenar un usuario recién creado
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request Se utiliza para recibir la informacion del frontend del usuario a almacenar
+     * @return \Illuminate\Http\Response 
      */
     public function store(Request $request)
     {
@@ -55,9 +55,9 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Se utiliza para mostrar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento en especifico mostrar
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,9 +66,9 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Se utiliza para mostrar el formulario donde se va a editar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento en especifico editar
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -78,10 +78,10 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Se utiliza para actualizar un elemento en especifico
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request Utilizado para recibir la información desde el frontend
+     * @param  int  $id Utilizado para saber que elemento en especifico actualizar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -103,9 +103,9 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Se utiliza para eliminar un elemento en especifico del almacenamiento
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento en especifico eliminar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

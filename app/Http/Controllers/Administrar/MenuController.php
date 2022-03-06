@@ -14,7 +14,7 @@ use Illuminate\Contracts\Session\Session;
 class MenuController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se utiliza para desplegar todos los menus
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,8 +25,9 @@ class MenuController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * Se utiliza para mostrar el formulario donde
+     * se va a crear un menu nuevo
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -37,9 +38,9 @@ class MenuController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Se utiliza para almacenar un menu recién creado
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request Utilizado para recibir la información proveniente del frontend
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -77,9 +78,9 @@ class MenuController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Se utiliza para mostrar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento mostrar
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -88,9 +89,10 @@ class MenuController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Se utiliza para mostrar el formulario donde se va a editar
+     * un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para recibir el id del elemento a editar
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -101,10 +103,10 @@ class MenuController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Se utiliza para actualizar un elemento en especifico 
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request Utilizado para recibir la información del frontend
+     * @param  int  $id Utilizado para saber que elemento actualizar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -143,9 +145,9 @@ class MenuController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Se utiliza para eliminar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento en hay que eliminar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

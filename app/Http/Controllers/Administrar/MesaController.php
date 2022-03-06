@@ -10,7 +10,7 @@ use Illuminate\Contracts\Session\Session;
 class MesaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se utiliza para desplegar todas las mesas
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,8 @@ class MesaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Se utiliza para mostrar el formulario donde se crean 
+     * mesas nuevas
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,9 +32,9 @@ class MesaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Se utiliza para almacenar un elemento recién creado
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request Utilizado para recibir la información del elemento a almacenar
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,9 +50,9 @@ class MesaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Se utiliza para desplegar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento en especifico mostrar
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -60,9 +61,9 @@ class MesaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
+     * Se utiliza para mostrar el formulario donde se va a editar
+     * un elemento en especifico
+     * @param  int  $id Utilizado para saber que elemento en especifico editar
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -72,10 +73,10 @@ class MesaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Se utiliza para actualizar un elemento en especifico en el almacenamiento
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request Utilizado para recibir la información a actualizar
+     * @param  int  $id Utilizado para saber que elemento en especifico actualizar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,9 +90,9 @@ class MesaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Se utiliza para eliminar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para saber que elemento en especifico eliminar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

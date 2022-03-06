@@ -8,10 +8,17 @@ use App\Categoria;
 use App\Models\Categoria as ModelsCategoria;
 use Illuminate\Contracts\Session\Session;
 
+/**
+ * Clase utilizada para controlar todos los
+ * metodos relacionados con el modulo
+ * de categoria
+ */
+
 class CategoriaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se utiliza para desplegar todas las categorías
+     * en el index
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,8 +29,9 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * Se utiliza para mostrar el formulario de crear
+     * una categoría nueva
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -32,9 +40,9 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Se utiliza para almacenar una categoría recién creada
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request Es utilizado para recibir la información que llega del frontend
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,9 +59,9 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrará un objeto en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para recibir el id desde el frontend
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,9 +70,10 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
+     * Se utiliza para mostrar el formulario donde se va a editar
+     * un elemento en especifico
+     * 
+     * @param  int  $id Utilizado para recibir el id del elemento en especifico
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,10 +83,10 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Se utiliza para actualizar un elemento en especifico
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request Utilizado para traer todo el contenido de la solicitud
+     * @param  int  $id Utilizado para especificar el elemento a actualizar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,9 +102,9 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Se utiliza para eliminar un elemento en especifico
      *
-     * @param  int  $id
+     * @param  int  $id Utilizado para referenciar el elemento a eliminar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
