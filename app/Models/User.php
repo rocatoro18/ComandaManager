@@ -50,4 +50,9 @@ class User extends Authenticatable
         }
     }
 
+    public function passwordSecurity()
+    {
+        return $this->hasOne('App\PasswordSecurity');
+    }
+
 }
