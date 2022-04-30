@@ -10,6 +10,8 @@
             <div id="selected-table">
             <div id="order-detail"></div>
             </div>
+            <br>
+            <button type="button" class="btn btn-primary"><a href="/home" style="text-decoration: none; text-color:white" >Regresar al Menú Principal</a></button>
         </div>
         <div class="col-md-7">
             <nav>

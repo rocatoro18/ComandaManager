@@ -57,7 +57,7 @@
                             @endif
                         @else
 
-                        
+                        <!--
                         <a class="navbar-nav mr-auto" href="{{ url('/administrar') }}">
                         <i class="fa fa-users"style="font-size:20px; vertical-align: middle;"></i>&nbsp; Administrar
                         </a>
@@ -70,7 +70,7 @@
                         <a class="navbar-nav mr-auto" href="{{ url('/reporte') }}">
                         <i class="fas fa-chart-line"style="font-size:20px; vertical-align: middle;"></i>&nbsp; Reporte
                         </a>
-                    
+                    -->
                     </ul>
                     <ul class="navbar-nav ms-auto">    
 
