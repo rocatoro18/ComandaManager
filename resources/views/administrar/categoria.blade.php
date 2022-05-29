@@ -21,7 +21,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Categoría</th>
                         <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <!--<th scope="col">Eliminar</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +32,7 @@
                         <th>
                             <a href="/administrar/categoria/{{$categoria->id}}/edit" class="btn btn-warning">Editar</a>
                         </th>
+                        <!--
                         <th>
                         <form action="/administrar/categoria/{{$categoria->id}}" method="POST">
                             @csrf
@@ -39,6 +40,7 @@
                             <input type="submit" value="Eliminar" class="btn btn-danger">
                         </form>
                         </th>
+                        -->
                     </tr>
 
 

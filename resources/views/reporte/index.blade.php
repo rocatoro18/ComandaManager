@@ -34,7 +34,7 @@
             </div>
           </div>
           <input class="btn btn-primary" type="submit" value="Mostrar Reporte">
-        
+          <button type="button" class="btn btn-primary"><a href="/home" style="text-decoration: none; text-color:white" >Regresar al Menú Principal</a></button>
         </div>
       </form>
     </div>

@@ -12,19 +12,28 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name" class="form-control" placeholder="Nombre">                 
+                        <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{old('name')}}">                 
                     </div>
-
+                    @error('name')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Email">                 
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">                 
                     </div>      
-
+                    @error('email')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">                 
                     </div>
-
+                    @error('password')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <div class="form-group">
                         <label for="role">Rol</label>
                         <select name="role" class="form-control">

@@ -13,8 +13,12 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="mesaNombre">Nombre Mesa</label>
-                        <input type="text" name="nombre" value="{{$mesa->nombre}}" class="form-control" placeholder="Nombre Mesa">
+                        <input type="text" name="nombre" value="{{old('nombre',$mesa->nombre)}}" class="form-control" placeholder="Nombre Mesa">
                     </div>
+                    @error('nombre')
+                            <small style="color: red;">*{{$message}}</small>
+                            <br>
+                    @enderror
                     <br>
                     <button type="submit" class="btn btn-warning">Editar</button>
                 </form>

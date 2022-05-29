@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    <i class="fas fa-utensils"></i> Comanda Manager - Peccata Minuta
+                    <i class="fas fa-utensils"></i> Peccata Minuta
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -56,10 +56,30 @@
                                 </li>
                             @endif
                         @else
+
+                        <!--
+                        <a class="navbar-nav mr-auto" href="{{ url('/administrar') }}">
+                        <i class="fa fa-users"style="font-size:20px; vertical-align: middle;"></i>&nbsp; Administrar
+                        </a>
+                    
+
+                        <a class="navbar-nav mr-auto" href="{{ url('/cajero') }}">
+                        <i class="fas fa-cash-register"style="font-size:20px; vertical-align: middle;"></i>&nbsp; Cajero
+                        </a>
+
+                        <a class="navbar-nav mr-auto" href="{{ url('/reporte') }}">
+                        <i class="fas fa-chart-line"style="font-size:20px; vertical-align: middle;"></i>&nbsp; Reporte
+                        </a>
+                    -->
+                    </ul>
+                    <ul class="navbar-nav ms-auto">    
+
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -73,6 +93,8 @@
                                     </form>
                                 </div>
                             </li>
+
+                            
                         @endguest
                     </ul>
                 </div>

@@ -44,9 +44,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:users|max:255',
+            'name' => 'required|unique:users|min:4|max:255',
             'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|min:6',
+            'password' => 'required|min:4',
             'role' => 'required'
         ]);
         $user = new ModelsUser();
@@ -92,9 +92,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|min:4|max:255',
             'email' => 'required|email|max:255',
-            'password' => 'required|min:6',
+            'password' => 'required|min:4',
             'role' => 'required'
         ]);
         $user = ModelsUser::find($id);
