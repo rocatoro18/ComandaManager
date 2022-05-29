@@ -20,8 +20,12 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="categoriaNombre">Nombre Categoría</label>
-                        <input type="text" name="nombre" value="{{$categoria->nombre}}" class="form-control" placeholder="Nombre Categoría">
+                        <input type="text" name="nombre" value="{{old('nombre',$categoria->nombre)}}" class="form-control" placeholder="Nombre Categoría">
                     </div>
+                    @error('nombre')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                    @enderror
                     <br>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                 </form>

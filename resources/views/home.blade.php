@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    
                     <div class="row text-center">
                         @if(Auth::user()->checkAdmin())
                         <div class="col-sm-4">
@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         @endif
-                        
+
                     </div>
                 </div>
             </div>

@@ -12,8 +12,12 @@
                     @csrf
                     <div class="form-group">
                         <label for="mesaNombre">Nombre Mesa</label>
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre Mesa">
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre Mesa" value="{{old('nombre')}}">
                     </div>
+                    @error('nombre')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <br>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>

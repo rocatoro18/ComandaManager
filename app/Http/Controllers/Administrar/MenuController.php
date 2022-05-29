@@ -52,9 +52,10 @@ class MenuController extends Controller
     {
         
         $request->validate([
-            'nombre' => 'required|unique:menus|max:50',
+            'nombre' => 'required|unique:menus|min:2|max:50',
             'precio' => 'required|numeric',
-            'categoria_id' => 'required|numeric'
+            'categoria_id' => 'required|numeric',
+            'descripcion' => 'required|min:2|max:50'
         ]);
         
         // Si el usuario no sube una imagen, usar noimage.png para el menú
@@ -118,9 +119,10 @@ class MenuController extends Controller
     {
         // validación de informacion
         $request->validate([
-            'nombre' => 'required|max:50',
+            'nombre' => 'required|min:2|max:50',
             'precio' => 'required|numeric',
-            'categoria_id' => 'required|numeric'
+            'categoria_id' => 'required|numeric',
+            'descripcion' => 'required|min:2|max:50'
         ]);
         $menu = ModelsMenu::find($id);
         // validar si el usuario subio imagen

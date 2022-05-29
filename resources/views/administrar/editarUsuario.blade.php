@@ -13,19 +13,28 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nombre">                 
+                        <input type="text" name="name" value="{{old('name',$user->name)}}" class="form-control" placeholder="Nombre">                 
                     </div>
-
+                    @error('name')
+                            <small style="color: red;">*{{$message}}</small>
+                            <br>
+                    @enderror
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" value="{{$user->email}}" class="form-control" placeholder="Email">                 
+                        <input type="email" name="email" value="{{old('email',$user->email)}}" class="form-control" placeholder="Email">                 
                     </div>      
-
+                    @error('email')
+                            <small style="color: red;">*{{$message}}</small>
+                            <br>
+                    @enderror
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">                 
                     </div>
-
+                    @error('password')
+                            <small style="color: red;">*{{$message}}</small>
+                            <br>
+                    @enderror
                     <div class="form-group">
                         <label for="role">Rol</label>
                         <select name="role" class="form-control">

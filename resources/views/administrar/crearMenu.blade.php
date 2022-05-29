@@ -12,7 +12,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="menuNombre">Nombre Menú</label>
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre Menú">
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre Menú" value="{{old('nombre')}}">
+                        @error('nombre')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                         <label for="precioMenu">Precio Menú</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -23,6 +27,10 @@
                                 <span class="input-group-text">.00</span>
                             </div> 
                         </div>
+                        @error('precio')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <label for="imagenMenu">Imagen Menú</label>
                     <div class="input-group mb-3">
                         <input type="file" name="image" class="form-control" id="inputGroupFile01">
@@ -31,9 +39,12 @@
                     </div>
                     <div class="form-group">
                         <label for="Descripcion">Descripción Menú</label>
-                        <input type="text" name="descripcion" class="form-control" placeholder="Descripción Menú">
+                        <input type="text" name="descripcion" class="form-control" placeholder="Descripción Menú" value="{{old('descripcion')}}">
                     </div>
-
+                    @error('descripcion')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <div class="form-group">
                         <label for="Categoria">Categoría Menú</label>
                         <select class="form-control" name="categoria_id">
