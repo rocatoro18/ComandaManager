@@ -67,6 +67,12 @@ Route::middleware(['auth','VerifyAdmin'])->group(function(){
 
 
 
-Auth::routes();
+//Auth::routes();
+
+
+Route::match(['get', 'post'], 'register', function(){
+    return redirect('/');
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
