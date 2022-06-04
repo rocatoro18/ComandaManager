@@ -71,7 +71,8 @@
                                 <input type="submit" value="Eliminar" class="btn btn-danger">
                             </form>
                             -->
-                            <button type="button" class="btn btn-danger deleteUserBtn" value="{{$user->id}}">Eliminar</button>
+                            <button type="button" class="btn btn-danger deleteUserBtn" value="{{$user->id}}" 
+                            @if($user->id === auth()->id()) disabled @endif>Eliminar</button>
                         </td>
 
                     </tr>
