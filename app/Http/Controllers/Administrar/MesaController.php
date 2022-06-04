@@ -100,9 +100,9 @@ class MesaController extends Controller
      * @param  int  $id Utilizado para saber que elemento en especifico eliminar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
-        ModelsMesa::destroy($id);
+        ModelsMesa::destroy($id->mesa_delete_id);
         Session()->flash('status','La mesa se ha eliminado con éxito');
         return redirect('/administrar/mesa');
     }

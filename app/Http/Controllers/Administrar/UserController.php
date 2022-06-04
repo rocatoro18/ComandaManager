@@ -113,9 +113,9 @@ class UserController extends Controller
      * @param  int  $id Utilizado para saber que elemento en especifico eliminar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
-        ModelsUser::destroy($id);
+        ModelsUser::destroy($id->user_delete_id);
         Session()->flash('status','El usuario se ha eliminado con éxito');
         return redirect('/administrar/user');
     }

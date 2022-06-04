@@ -157,9 +157,9 @@ class MenuController extends Controller
      * @param  int  $id Utilizado para saber que elemento en hay que eliminar
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $id)
     {
-        $menu = ModelsMenu::find($id);
+        $menu = ModelsMenu::find($id->menu_delete_id);
         if($menu->image != "noimage.png"){
             unlink(public_path('menu_images').'/'.$menu->image);
         }

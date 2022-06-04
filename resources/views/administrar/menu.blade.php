@@ -2,6 +2,33 @@
 
 @section('content')
 
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+    <form action="/administrar/menu-eliminar" method="POST">
+    @csrf
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <input type="hidden" name="menu_delete_id" id="menu_id">
+        <h5>¿Está seguro de que desea eliminar este menú?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-danger">Sí Eliminar</button>
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+</div>
+
     <div class="container">
         <div class="row justify-content-center">
             @include('administrar.inc.sidebar')
@@ -41,13 +68,19 @@
                         <td>{{$menu->descripcion}}</td>
                         <td>{{$menu->categoria->nombre}}</td>
                         <td><a href="/administrar/menu/{{$menu->id}}/edit" class="btn btn-warning">Editar</a></td>
+                        
+
                         <td>
+                            <!--
                             <form action="/administrar/menu/{{$menu->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Eliminar" class="btn btn-danger">
                             </form>
+                            -->
+                            <button type="button" class="btn btn-danger deleteMenuBtn" value="{{$menu->id}}">Eliminar</button>
                         </td>
+
                     </tr>
 
                    @endforeach
@@ -57,5 +90,27 @@
             </div>
         </div>
     </div>
+
+
+@endsection
+
+@section('scripts')
+
+    <script>
+        $(document).ready(function(){
+
+            //$('.deleteMenuBtn').click(function(e){
+                $(document).on('click','.deleteMenuBtn',function(e){
+                    
+                e.preventDefault();
+
+                var menu_id = $(this).val();
+                $('#menu_id').val(menu_id);
+                $('#deleteModal').modal('show');
+
+            });
+
+        });
+    </script>
 
 @endsection

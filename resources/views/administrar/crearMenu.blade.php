@@ -22,10 +22,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="text" name="precio" class="form-control" aria-label="Monto (al peso más cercano)">
+                            <input type="text" placeholder="0.00"name="precio" class="form-control" aria-label="Monto (al peso más cercano)">
+                            
+                            <!--
                             <div class="input-group-append">
                                 <span class="input-group-text">.00</span>
                             </div> 
+                            -->
                         </div>
                         @error('precio')
                             <small style="color: red;">*{{$message}}</small>
@@ -37,6 +40,10 @@
                         <label class="input-group-text" for="inputGroupFile01">Subir</label>
                     </div>                  
                     </div>
+                    @error('image')
+                            <small style="color: red;">*{{$message}}</small>
+                        <br>
+                        @enderror
                     <div class="form-group">
                         <label for="Descripcion">Descripción Menú</label>
                         <input type="text" name="descripcion" class="form-control" placeholder="Descripción Menú" value="{{old('descripcion')}}">

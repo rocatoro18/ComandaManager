@@ -55,6 +55,14 @@ Route::middleware(['auth','VerifyAdmin'])->group(function(){
     Route::resource('administrar/menu','App\Http\Controllers\Administrar\MenuController');
     Route::resource('administrar/mesa','App\Http\Controllers\Administrar\MesaController');
     
+    //Inicio eliminar con verificacion
+
+    Route::post('/administrar/menu-eliminar','App\Http\Controllers\Administrar\MenuController@destroy');
+    Route::post('/administrar/mesa-eliminar','App\Http\Controllers\Administrar\MesaController@destroy');
+    Route::post('/administrar/user-eliminar','App\Http\Controllers\Administrar\UserController@destroy');
+
+    //Fin eliminar con verificacion
+
     Route::resource('administrar/user','App\Http\Controllers\Administrar\UserController');
 
     Route::get('/reporte','App\Http\Controllers\Reporte\ReporteController@index');
