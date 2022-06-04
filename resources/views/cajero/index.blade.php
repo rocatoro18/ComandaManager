@@ -14,6 +14,7 @@
             <button type="button" class="btn btn-primary"><a href="/home" style="text-decoration: none; text-color:white" >Regresar al Menú Principal</a></button>
         </div>
         <div class="col-md-7">
+        <h5>Categorías</h5>
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     @foreach($categorias as $categoria)

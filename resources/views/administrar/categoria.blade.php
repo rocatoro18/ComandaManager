@@ -18,7 +18,7 @@
                 <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <!--<th scope="col">ID</th>-->
                         <th scope="col">Categoría</th>
                         <th scope="col">Editar</th>
                         <!--<th scope="col">Eliminar</th>-->
@@ -27,7 +27,7 @@
                 <tbody>
                     @foreach($categorias as $categoria)
                     <tr>
-                        <th scope="row">{{$categoria->id}}</th>
+                        <!--<th scope="row">{{$categoria->id}}</th>-->
                         <th>{{$categoria->nombre}}</th>
                         <th>
                             <a href="/administrar/categoria/{{$categoria->id}}/edit" class="btn btn-warning">Editar</a>

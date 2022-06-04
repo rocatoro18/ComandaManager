@@ -45,7 +45,7 @@
                 <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <!--<th scope="col">ID</th>-->
                         <th scope="col">Mesa</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Editar</th>
@@ -56,7 +56,7 @@
                    @foreach($mesas as $mesa)
                 
                    <tr>
-                       <td>{{$mesa->id}}</td>
+                       <!--<td>{{$mesa->id}}</td>-->
                        <td>{{$mesa->nombre}}</td>
                        <td>{{$mesa->estado}}</td>
                        <td>

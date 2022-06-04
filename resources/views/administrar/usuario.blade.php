@@ -45,7 +45,7 @@
                 <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <!--<th scope="col">ID</th>-->
                         <th scope="col">Nombre</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Email</th>
@@ -57,7 +57,7 @@
                    @foreach($users as $user)
 
                     <tr>
-                        <td>{{$user->id}}</td>
+                        <!--<td>{{$user->id}}</td>-->
                         <td>{{$user->name}}</td>
                         <td>{{$user->role}}</td>
                         <td>{{$user->email}}</td>
